@@ -18,14 +18,22 @@ myApp.controller('appCtrl', function($scope, $http){
     var formatData = function(data){
         var listings = [];
         angular.forEach(data.listings, function(item){
-            listings.push({
+            var newItem = {
                 address: item.location.address,
                 locality: item.location.locality,
                 postal: item.location.postal,
                 phone: formatPhone(item.contact.phone),
                 email: item.contact.email,
-                purchase_type: item.purchase_types.join(',')
-            })
+                purchase_type: item.purchase_types.join(','),
+                url: (item.cur_data=== undefined)?item.cur_data.url: ''
+            }
+
+            //Add meta data if available
+            if (item.cur_data !== undefined) {
+                _.extend( newItem, item.cur_data );
+            }
+
+            listings.push(newItem);
         });
       return listings;
     }
@@ -35,6 +43,7 @@ myApp.controller('appCtrl', function($scope, $http){
         $scope.sortKey = keyname;
         $scope.reverse = !$scope.reverse;
     }
+    
     //Get data
     $http.get('/data').success(function(data) {   
         $scope.listingData = formatData(data);

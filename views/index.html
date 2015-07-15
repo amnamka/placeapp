@@ -12,11 +12,16 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th ng-click="sort('address')" class="sorter">Address<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='address'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th ng-click="sort('address')" class="sorter control_label">Address<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='address'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
                         <th ng-click="sort('locality')" class="sorter">City<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='locality'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
                         <th ng-click="sort('postal')" class="sorter">Zip<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='postal'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
                         <th ng-click="sort('purchase_type')" class="sorter">Type<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='purchase_type'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
-                        <th>Contact phone</th>
+                        <th ng-click="sort('price')" class="sorter">Price<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='price'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th ng-click="sort('sqft')" class="sorter">Sqft<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='sqft'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th ng-click="sort('beds')" class="sorter">Beds<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='beds'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th ng-click="sort('baths')" class="sorter">Baths<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='baths'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th ng-click="sort('half_baths')" class="sorter">HalfBaths<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='half_baths'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th class="control_label">Contact phone</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +31,11 @@
                         <td>{{item.locality}}</td>
                         <td>{{item.postal}}</td>
                         <td>{{item.purchase_type}}</td>
+                        <td>{{item.price | number : 0 }}</td>
+                        <td>{{item.sqft | number : 0 }}</td>
+                        <td>{{item.beds}}</td>
+                        <td>{{item.baths}}</td>
+                        <td>{{item.half_baths}}</td>
                         <td>{{item.phone}}</td>
                     </tr>
                 </tbody>
@@ -35,6 +45,7 @@
     </div>
     <script src="js/lib/angular/angular.js"></script>
     <script src="js/lib/angular-utils-pagination/dirPagination.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
     <script src="js/controller.js"></script>
     </body>
 </html>
