@@ -1,0 +1,40 @@
+<html lang="en" ng-app="myApp">  
+    <head>
+        <meta charset="utf-8">
+        <title>Quick app</title>
+        <link rel="stylesheet" type="text/css" href="css/lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+    </head>
+    <body>
+    <div role="main" class="container">
+        <h2>Quick app</h2>
+        <div ng-controller="appCtrl">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th ng-click="sort('address')" class="sorter">Address<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='address'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th ng-click="sort('locality')" class="sorter">City<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='locality'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th ng-click="sort('postal')" class="sorter">Zip<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='postal'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th ng-click="sort('purchase_type')" class="sorter">Type<span class="glyphicon glyphicon-triangle-top" ng-show="sortKey=='purchase_type'" ng-class="{'glyphicon glyphicon-triangle-bottom':reverse,'glyphicon glyphicon-triangle-top':!reverse}"></span></th>
+                        <th>Contact phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in listingData | orderBy:sortKey:reverse" >
+                    <!--dir-paginate="item in listingData | filter:q | itemsPerPage: pageSize" current-page="currentPage"-->
+                        <td>{{item.address}}</td>
+                        <td>{{item.locality}}</td>
+                        <td>{{item.postal}}</td>
+                        <td>{{item.purchase_type}}</td>
+                        <td>{{item.phone}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="js/lib/angular-utils-pagination/dirPagination.tpl.html"></dir-pagination-controls> -->
+        </div>
+    </div>
+    <script src="js/lib/angular/angular.js"></script>
+    <script src="js/lib/angular-utils-pagination/dirPagination.js"></script>
+    <script src="js/controller.js"></script>
+    </body>
+</html>
